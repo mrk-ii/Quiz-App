@@ -1,6 +1,6 @@
 'use strict';
 
-const QUESTIONS = [
+const DATA = [
   {
     question: 'What did Toyota produce before maufacturing automobiles?',
     answers: ['Paper', 'Tools', 'Sewing Machines', 'Weapons' ],
@@ -67,7 +67,7 @@ const QUESTIONS = [
     correctAnswer: '2004'
   },
   {
-    question: 'In 1951, the Japanese car manufacturer launched a series of four-wheel-drive vehicles which became Toyota’s longest running series. What its the name of this series?',
+    question: 'In 1951, the Japanese car manufacturer launched a series of four-wheel-drive vehicles which became Toyota’s longest running series. What is the name of this series?',
     answers: ['Tacoma', '4Runner', 'Land Cruiser', 'Highlander' ],
     correctAnswer: 'Land Cruiser'
   },
@@ -94,7 +94,9 @@ const QUESTIONS = [
   {
     question: 'What Toyota produced Hybrid-vehicle holds the record for being the best-selling hybrid car in the world?',
     answers: ['Toyota Rav4', 'Toyota Corolla', 'Toyota Echo', 'Toyota Prius' ],
-    correctAnswer: 'Toyota Prius'
+    correctAnswer: 'Toyota Prius',
+    // icon: 'https://diminishedvalueofgeorgia.com/wp-content/uploads/2013/07/Toyota-Prius-Burn-Fire-Damage-3.jpg',
+    // alt: 'burnt Prius'
   },
   {
     question: 'How many Priuses have been sold?',

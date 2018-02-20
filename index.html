@@ -7,14 +7,16 @@
     <title>Toyota Quiz</title>
     <link href="main.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="main.css">
+    <!-- <link rel="stylesheet" href="main.css"> -->
 </head>
 
 <body>
     <div class="quiz">
         <header role="banner">
-            <img src="https://1.bp.blogspot.com/_b-sBj2_DDes/TT2KsauUYCI/AAAAAAAAOXs/lM33ZMJoigg/s1600/logo_Toyota.jpg" class="logo">
-            <div>
+            <div class="col-4">
+                <img src="https://1.bp.blogspot.com/_b-sBj2_DDes/TT2KsauUYCI/AAAAAAAAOXs/lM33ZMJoigg/s1600/logo_Toyota.jpg" alt="Toyota Logo" class="logo">
+            </div>
+            <div class="col-8">
                 <ul>
                     <li>Question: <span class="questionIndex">0</span>/20</li>
                     <li>Score: <span class="score">0</span></li>
@@ -22,14 +24,17 @@
             </div>
         </header>
         <main role="main">
-            <div class="container">
+            <div class="startPage">
                 <h1>Test your Toyota Knowledge!</h1>
-                <button id="startButton">START</button>
+                <span>
+                        <iframe src="https://giphy.com/embed/oxRjoVJvBidhe" width="480" height="205" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                </span>
+                <button type="button" class="startButton">START</button>
             </div>
-            <div id='Questions'></div>
+            <div class='questionsForm'></div>
         </main>
         <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
-        <script src="questions.js"></script>
+        <script src="data.js"></script>
         <script src="index.js"></script>
     </div>
 </body>
