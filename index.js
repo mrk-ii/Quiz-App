@@ -144,7 +144,7 @@ function renderResults() {
     $('.startPage').html(`<div class="results correctFeedback"><h3>You know a few things about Toyota.</h3><iframe src="https://giphy.com/embed/xT5LMAAjAekNfa1ewg" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   } else {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>You know nothing about Toyota!</h3><div position:relative;"><iframe src="https://giphy.com/embed/vwa3O4PQO1HNu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p>You got ${score} / 20</p>
+    $('.startPage').html(`<div class="results correctFeedback"><h3>You know nothing about Toyota! Keep Trucking!</h3><div position:relative;"><iframe src="https://giphy.com/embed/vwa3O4PQO1HNu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   }
 }
