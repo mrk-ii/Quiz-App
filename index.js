@@ -1,4 +1,4 @@
-'use strict';
+('use strict');
 
 let questionIndex = 0;
 let score = 0;
@@ -13,19 +13,23 @@ function generateQuestion() {
       <form>
         <fieldset>
           <label class="answerOption">
-            <input type="radio" value="${DATA[questionIndex].answers[0]}" name="answer" required>
+            <input type="radio" value="${DATA[questionIndex]
+    .answers[0]}" name="answer" required>
             <span>${DATA[questionIndex].answers[0]}</span>
           </label>
           <label class="answerOption">
-            <input type="radio" value="${DATA[questionIndex].answers[1]}" name="answer" required>
+            <input type="radio" value="${DATA[questionIndex]
+    .answers[1]}" name="answer" required>
             <span>${DATA[questionIndex].answers[1]}</span>
           </label>
           <label class="answerOption">
-            <input type="radio" value="${DATA[questionIndex].answers[2]}" name="answer" required>
+            <input type="radio" value="${DATA[questionIndex]
+    .answers[2]}" name="answer" required>
             <span>${DATA[questionIndex].answers[2]}</span>
           </label>
           <label class="answerOption">
-            <input type="radio" value="${DATA[questionIndex].answers[3]}" name="answer" required>
+            <input type="radio" value="${DATA[questionIndex]
+    .answers[3]}" name="answer" required>
             <span>${DATA[questionIndex].answers[3]}</span>
           </label>
           <button type="submit" class="submitButton">Submit</button>
@@ -41,13 +45,13 @@ function generateQuestion() {
 
 function changeQuestionNumber() {
   console.log('changeQuestionNumber ran');
-  questionIndex ++;
-  $('.questionIndex').text(questionIndex+1);
+  questionIndex++;
+  $('.questionIndex').text(questionIndex + 1);
 }
 
 function changeScore() {
   console.log('changeScore ran');
-  score ++;
+  score++;
 }
 
 function renderQuestion() {
@@ -59,7 +63,7 @@ function renderQuestion() {
 function startQuiz() {
   console.log('startQuiz ran');
   $('.startPage').on('click', '.startButton', function(event) {
-    console.log('actually started quiz');
+    console.log('clicked start button, actually started quiz');
     // $('.startPage').remove();
     $('.startButton').css('display', 'none');
     $('.questionIndex').text(1);
@@ -67,11 +71,9 @@ function startQuiz() {
   });
 }
 
-
-
 function userSelectAnswer() {
   console.log('userSelectAnswer ran');
-  $('form').on('submit', function (event) {
+  $('form').on('submit', function(event) {
     event.preventDefault();
     let selected = $('input:checked');
     console.log(selected);
@@ -102,16 +104,23 @@ function ifAnswerIsWrong() {
   userAnswerFeedbackWrong();
 }
 
+//user feedback for correct answer
 function userAnswerFeedbackCorrect() {
   console.log('userAnswerFeedbackCorrect ran');
   let correctAnswer = `${DATA[questionIndex].correctAnswer}`;
-  $('.startPage').html('<div class="correctFeedback"><div><div><iframe src="https://giphy.com/embed/l1IYc7ads36IEj2aA" width="640" height="480" frameBorder="0" class="giphy-embed"></iframe></div><p><b>Correct!</b></p><button type=button class="nextButton">Next</button></div>');
+  $('.startPage').html(
+    `<div class="correctFeedback"><div class="image-container"><img src="${DATA[questionIndex].image}" alt="${DATA[questionIndex].alt}"  /></div><p><b>Correct!</b></p><button type=button class="nextButton">Next</button></div>`
+  );
 }
 
+//user feedback for incorrect answer
 function userAnswerFeedbackWrong() {
   console.log('userAnswerFeedbackWrong ran');
   let correctAnswer = `${DATA[questionIndex].correctAnswer}`;
-  $('.startPage').html(`<div class="correctFeedback"><div class="icon"><img src="http://moejackson.com/wp-content/uploads/2012/07/crash_556x3131.jpg" /></div><p><b>WRONG!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`);
+  let wrongAnswer = `${DATA[questionIndex].wrongAnswer}`;
+  $('.startPage').html(
+    `<div class="correctFeedback"><div class="image-container"><img src="${wrongAnswer}" alt="${DATA[questionIndex].wrongAlt}"  /></div><p><b>WRONG!</b><br>the correct answer is <span>"${correctAnswer}"</span></p><button type=button class="nextButton">Next</button></div>`
+  );
 }
 
 function updateScore() {
@@ -122,7 +131,7 @@ function updateScore() {
 
 function renderNextQuestion() {
   console.log('renderNextQuestion ran');
-  $('main').on('click', '.nextButton', function (event) {
+  $('main').on('click', '.nextButton', function(event) {
     changeQuestionNumber();
     renderQuestion();
     // userSelectAnswer();
@@ -132,26 +141,31 @@ function renderNextQuestion() {
 function renderResults() {
   console.log('renderResults ran');
   if (score === 20) {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>Perfect Score!!! You are an expert on Toyota!</h3><iframe src="https://giphy.com/embed/ErIP6WHxI6avC" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>You got ${score} / 20 !!!</p>
+    $('.startPage')
+      .html(`<div class="results correctFeedback"><h3>Perfect Score!!! You are an expert on Toyota!</h3><iframe src="https://giphy.com/embed/ErIP6WHxI6avC" frameBorder="0" class="giphy-embed" allowFullScreen></img><p>You got ${score} / 20 !!!</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   } else if (score <= 19 && score >= 15) {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>You must own a Toyota!</h3><iframe src="https://giphy.com/embed/l0G18bMiyWTP0B476" width="480" height="356" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>You got ${score} / 20</p>
+    $('.startPage')
+      .html(`<div class="results correctFeedback"><h3>You must own a Toyota!</h3><iframe src="https://giphy.com/embed/l0G18bMiyWTP0B476" frameBorder="0" class="giphy-embed" allowFullScreen></img><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   } else if (score < 15 && score >= 13) {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>You are knowledgeable Toyota!</h3><iframe src="https://giphy.com/embed/3o6Mb6Ye7O1PwDMZZm" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>You got ${score} / 20</p>
+    $('.startPage')
+      .html(`<div class="results correctFeedback"><h3>You are knowledgeable Toyota!</h3><iframe src="https://giphy.com/embed/3o6Mb6Ye7O1PwDMZZm" frameBorder="0" class="giphy-embed" allowFullScreen></img><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   } else if (score < 13 && score >= 10) {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>You know a few things about Toyota.</h3><iframe src="https://giphy.com/embed/xT5LMAAjAekNfa1ewg" width="480" height="364" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p>You got ${score} / 20</p>
+    $('.startPage')
+      .html(`<div class="results correctFeedback"><h3>You know a few things about Toyota.</h3><iframe src="https://giphy.com/embed/xT5LMAAjAekNfa1ewg" frameBorder="0" class="giphy-embed" allowFullScreen></img><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   } else {
-    $('.startPage').html(`<div class="results correctFeedback"><h3>You know nothing about Toyota! Keep Trucking!</h3><div position:relative;"><iframe src="https://giphy.com/embed/vwa3O4PQO1HNu" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p>You got ${score} / 20</p>
+    $('.startPage')
+      .html(`<div class="results correctFeedback"><h3>You know nothing about Toyota! Keep Trucking!</h3><div position:relative;"><iframe src="https://giphy.com/embed/vwa3O4PQO1HNu" frameBorder="0" class="giphy-embed" allowFullScreen></img></div><p>You got ${score} / 20</p>
     <button class="restartButton">Restart Quiz</button></div>`);
   }
 }
 
 function restartQuiz() {
   console.log('restartQuiz ran');
-  $('main').on('click', '.restartButton', function (event) {
+  $('main').on('click', '.restartButton', function(event) {
     location.reload();
   });
 }
@@ -165,4 +179,3 @@ function createQuiz() {
 }
 
 $(createQuiz);
-
